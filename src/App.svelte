@@ -1,5 +1,6 @@
 <script lang="ts">
   // import svelteLogo from './assets/svelte.svg'
+  import GithubLogo from './assets/github.svg?component'
   import { dbcleanfood } from "./assets/db";
   import Result from "./lib/Result.svelte";
   import CopyBtn from "./lib/CopyBtn.svelte";
@@ -89,13 +90,11 @@
   function addQueryToURL() {
     const urlParams = new URLSearchParams(window.location.search);
     urlParams.set("order", cleanfoosCheckedCode.join(","));
-    // console.log(urlParams.get('order'));
     window.history.pushState(null, "", "?" + urlParams.toString());
   }
 
   onMount(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    console.log(urlParams.get("order"));
     const orderUrl = urlParams.get("order");
     if (orderUrl) {
       const orders = orderUrl.split(",");
@@ -111,6 +110,11 @@
 
 <main>
   <div>
+    <a href="https://github.com/mjkodkks/clean-food-order-list" class="w-7 h-7 float-right" target="_blank" rel="noreferrer">
+      <div class="text-white w-7 h-7 cursor-pointer">
+        <GithubLogo />
+      </div>
+    </a>
     <img src="/android-chrome-192x192.png" height="48" width="48" class="mx-auto" alt="cat">
     <div class="text-2xl mt-4">Clean Food Order List 📔 </div>
     <!-- {@debug cleanfoosChecked} -->
